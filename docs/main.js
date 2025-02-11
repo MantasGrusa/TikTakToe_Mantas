@@ -1,7 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   let currentPlayer = "X";
   let gameActive = true;
-  const tiles = document.querySelectorAll(".tile");
+  const tiles = document.querySelectorAll(".sizing");
+  const playerDisplay = document.querySelector("h3");
+  const resetButton = document.createElement("button");
+  resetButton.textContent = "Reset Game";
+  resetButton.style.marginTop = "20px";
+  resetButton.style.padding = "10px";
+  resetButton.style.fontSize = "16px";
+  document.body.appendChild(resetButton);
   const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
@@ -50,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   function switchPlayer() {
     currentPlayer = currentPlayer === "X" ? "O" : "X";
+    if (playerDisplay) playerDisplay.textContent = `Current player: ${currentPlayer}`;
   }
   function checkWin(player) {
     return winPatterns.some(
@@ -59,5 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
   function checkDraw() {
     return [...tiles].every((tile) => tile.textContent !== "");
   }
+  resetButton.addEventListener("click", () => {
+    gameActive = true;
+    currentPlayer = "X";
+    if (playerDisplay) playerDisplay.textContent = "Current player: X";
+    tiles.forEach((tile) => {
+      tile.textContent = "";
+      tile.style.opacity = "1";
+      tile.classList.remove("X", "O");
+    });
+  });
 });
 //# sourceMappingURL=main.js.map
