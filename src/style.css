@@ -1,0 +1,36 @@
+.grid {
+    display: grid;
+    gap: 1px;
+    grid-template-columns: 15rem 15rem 15rem;
+}
+
+
+.tile {
+    width: 100px;
+    height: 100px;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #000;
+    cursor: pointer;
+    user-select: none;
+}
+
+.sizing {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pickstyling {
+    font-style: normal;
+    font-size: 5rem;  /* Increase font size here */
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.sizing:hover .pickstyling {
+    opacity: 0.5; /* Adjust hover opacity */
+}
